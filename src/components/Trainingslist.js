@@ -19,16 +19,12 @@ const Trainingslist = () => {
         .catch(err => console.error(err))
     }
 
-    const dateFormatting = (date) => {
-        moment(date).format('DD/MM/YYYY HH:mm')
-    }
-
     const columns = [
         {
             id:"joku",
             Header: 'Date',
             accessor: date => {
-                return moment(date.date).format('DD/MM/YYYY HH:mm')
+                return moment(date.date).format('HH:mm DD.MM.YYYY')
             }
         },
         {
