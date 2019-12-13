@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 
 import Addcustomer from './Addcustomer';
 import Editcustomer from './Editcustomer';
+//import Trainingslist from './Trainingslist';
 
 export default function Customerlist () {
     const [customers, setCustomers] = useState([])
@@ -51,6 +52,13 @@ export default function Customerlist () {
         })
         .then(res => fetchCustomers())
         .catch(err => console.error(err)) 
+    }
+
+    const customersTrainings = (customer) => { //tiedän, että tää homma on väärin + ei toimi
+        fetch('https://customerrest.herokuapp.com/api/customers/links[0]/trainings')
+        .then(response => response.json())
+        .then(responseData => setCustomers(responseData.content))
+        .catch(err => console.error(err))
     }
 
     const updateCustomer = (customer, link) => {
@@ -99,10 +107,26 @@ export default function Customerlist () {
             accessor: 'phone'
         },
         {
+            Header: 'Trainings',
+            Cell: ({value}) => <p>(activities 404)</p> //joo..
+        },
+        //{
+            //Header: 'Trainings',
+            //accessor: 'links[2].href',
+            //Cell: ({value, original}) => <Trainingslist link={value} customer={original} />
+            //^tää näyttää homman ihan väärin...
+            
+            //Header: 'Trainings', //tiedän, että tää homma on väärin + ei toimi
+            //accessor: 'links[3].href',
+            //Cell: ({value, original}) => <customersTrainings link={value} customer={original}/>
+        //},
+        {
             Cell: row => <Editcustomer updateCustomer={updateCustomer} customer={row.original}/>,
             filterable: false,
             sortable: false,
             width: 80
+            //tässä ei nyt joku toimi... ei tallenna muutosta, mutta sanoo "changes saved succesfully"...
+            //toimi aikasemmin, mutta en löydä mitään eroa
         },
         {
             accessor: 'links[0].href',

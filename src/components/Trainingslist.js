@@ -5,6 +5,7 @@ import moment from 'moment';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
 import AddTraining from './AddTraining';
+//import Customerlist from './Customerlist';
 
 export default function Trainingslist () {
     const [trainings, setTrainings] = useState([])
@@ -58,7 +59,8 @@ export default function Trainingslist () {
             id:"joku",
             Header: 'Date',
             accessor: date => {
-                return moment(date.date).format('HH:mm DD.MM.YYYY')
+                return moment(date.date).format('HH:mm DD/MM/YY')
+            //accessor: 'date'
             }
         },
         {
@@ -69,6 +71,15 @@ export default function Trainingslist () {
             Header: 'Activity',
             accessor: 'activity'
         },
+        {
+            Header: 'Customer',
+            Cell: ({value}) => <p>(customer 404)</p> //joo..
+        },
+        //{
+        //    Header: 'Customer',
+        //    accessor: 'links[3].href',
+        //    Cell: ({value}) => <Customerlist link={value}/>
+        //},
         {
             accessor: 'links[0].href',
             filterable: false,

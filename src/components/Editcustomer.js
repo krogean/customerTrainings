@@ -45,7 +45,7 @@ export default function Editcustomer (props) {
       };
 
       const updateCustomer = () => {
-        props.updateCustomer(props.links[0].href, customer)
+        props.updateCustomer(props.links, customer)
         handleClose()
       };
 
@@ -110,7 +110,7 @@ export default function Editcustomer (props) {
               label="Email"
               fullWidth
             />
-                        <TextField
+            <TextField
               margin="dense"
               name="phone"
               value={customer.phone}
