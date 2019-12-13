@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CustomersTrainings from './components/CustomersTraining';
+import Trainingcalendar from './components/Calendar';
 
 function App() {
 
@@ -23,11 +24,13 @@ function App() {
       <BrowserRouter>
             <Button variant="outlined"><Link to={'/customers'}> Customers </Link></Button>
             <Button variant="outlined"><Link to={'/trainings'}> Trainings </Link></Button>
+            <Button variant="outlined"><Link to={'/calendar'}> Calendar </Link></Button>
             {/*<Button variant="outlined"><Link to={'/customerstrainings'}> Customers Trainings </Link></Button>*/}
 
           <Switch>
             <Route path="/customers" component={Customerlist} />
             <Route path='/trainings' component={Trainingslist} />
+            <Route path='/trainings' component={Trainingcalendar} />
             <Route path='/customerstrainings' component={CustomersTrainings} />
 
           </Switch>
